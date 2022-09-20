@@ -19,13 +19,15 @@ def import_data_one_day(station_list, day_id):
         day.append(d)
 
 
+    #print(day)
     path = day[0][day_id]
+
     stream = obspy.read(path)
     for index in range(1,len(day)):
         path = day[index][day_id]
         stream = stream + obspy.read(path)
     #print(len(stream))
-    print(stream)
+    #print(stream)
     return stream
 
 
@@ -34,10 +36,10 @@ def import_data_one_day(station_list, day_id):
 if __name__=='__main__':
     stat_list = [ 'A19' ,'A04' , 'A07' , 'A17' , 'B11' , 'B15' , 'B04' ]
     
-    st = import_data_one_day(stat_list,10)
+    idod = import_data_one_day(stat_list,10)
     
-    hr = 20
-    start_time = obspy.UTCDateTime('2020-1-' + str(10) + 'T00:00:00')
-    stream_snapshot = st.slice(starttime=start_time+hr*3600,endtime=start_time+(hr+1)*3600)
-    print(stream_snapshot)
+    #hr = 20
+    #start_time = obspy.UTCDateTime('2020-1-' + str(10) + 'T00:00:00')
+    #stream_snapshot = st.slice(starttime=start_time+hr*3600,endtime=start_time+(hr+1)*3600)
+    print(idod)
     #print('Nothing to see here. You may go about your business.')

@@ -47,7 +47,14 @@ def plot_wave(obspydata, **kwargs):
     
     #fig, ax = plt.subplots(data_len, figsize=(15, 5*data_len), sharex=True, sharey=True)
     
-    fig, ax = plt.subplots(data_len, figsize=(35, 15), sharex=True, sharey=True)
+    
+    
+    #fig, ax = plt.subplots(data_len, figsize=(35, 15), sharex=True, sharey=True)
+    fig, ax = plt.subplots(data_len, figsize=(15, 5*data_len), sharex=True, sharey=True)
+    
+    
+    
+    
     
     #fig, ax = plt.subplots(data_len, figsize=(35, 8), sharex=True, sharey=True)
         
@@ -62,6 +69,7 @@ def plot_wave(obspydata, **kwargs):
 
     for n, tr in enumerate(obspydata):
         ax[n].plot(tr.times('matplotlib'), np.array(tr.data) - np.mean(np.array(tr.data)), **kwargs)
+        ax[n].text(1, 1000,str("LALA"), fontsize = 12)
         #ax[n].set_ylabel('Pressure (Pa)', fontsize=15)
         
     ax[n].xaxis.set_major_formatter(PrecisionDateFormatter("%H:%M:%S.{ms}"))
